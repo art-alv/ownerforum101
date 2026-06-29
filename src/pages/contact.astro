@@ -1,0 +1,67 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import SubHeader from '../components/SubHeader.astro';
+import SubFooter from '../components/SubFooter.astro';
+---
+<BaseLayout title="Contact" description="Get in touch with Hi-there.net.">
+  <SubHeader title="Contact Us" subtitle="We'd love to hear from you." />
+
+  <div class="page-body">
+    <form class="contact-form" method="post" action="/api/contact">
+      <label>
+        Name
+        <input type="text" name="name" required />
+      </label>
+      <label>
+        Email
+        <input type="email" name="email" required />
+      </label>
+      <label>
+        Message
+        <textarea name="message" rows="6" required></textarea>
+      </label>
+      <button type="submit">Send Message</button>
+    </form>
+  </div>
+
+  <SubFooter />
+</BaseLayout>
+
+<style>
+  .page-body {
+    max-width: 640px;
+    margin: 2rem auto;
+    padding: 0 1.5rem;
+  }
+  .contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+  }
+  label {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    font-weight: 600;
+    font-size: 0.9rem;
+  }
+  input, textarea {
+    padding: 0.5rem 0.75rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1rem;
+    font-family: inherit;
+  }
+  button {
+    align-self: flex-start;
+    background: #e94560;
+    color: #fff;
+    border: none;
+    padding: 0.6rem 1.5rem;
+    border-radius: 4px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+  }
+  button:hover { background: #c73652; }
+</style>

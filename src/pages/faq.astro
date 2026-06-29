@@ -1,0 +1,60 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import SubHeader from '../components/SubHeader.astro';
+import SubFooter from '../components/SubFooter.astro';
+
+const faqs = [
+  {
+    q: 'What is Hi-there.net?',
+    a: 'Hi-there.net is a resource hub providing information, news, and community tools for members across the country.',
+  },
+  {
+    q: 'How do I join?',
+    a: 'Click the "Join" button in the header or footer to create your free member account.',
+  },
+  {
+    q: 'Is membership free?',
+    a: 'Basic membership is free. Premium tiers with additional features are available.',
+  },
+  {
+    q: 'How do I find resources for my state?',
+    a: 'Visit the Blog section and select your state from the menu on the left to see local content.',
+  },
+];
+---
+<BaseLayout title="FAQ" description="Frequently asked questions about Hi-there.net.">
+  <SubHeader title="Frequently Asked Questions" subtitle="Find answers to common questions." />
+
+  <div class="page-body">
+    <dl class="faq-list">
+      {faqs.map(({ q, a }) => (
+        <div class="faq-item">
+          <dt>{q}</dt>
+          <dd>{a}</dd>
+        </div>
+      ))}
+    </dl>
+  </div>
+
+  <SubFooter />
+</BaseLayout>
+
+<style>
+  .page-body {
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 0 1.5rem;
+  }
+  .faq-list { margin: 0; padding: 0; }
+  .faq-item {
+    border-bottom: 1px solid #eee;
+    padding: 1.25rem 0;
+  }
+  .faq-item:last-child { border-bottom: none; }
+  dt {
+    font-weight: 700;
+    font-size: 1.05rem;
+    margin-bottom: 0.5rem;
+  }
+  dd { margin: 0; color: #555; line-height: 1.6; }
+</style>

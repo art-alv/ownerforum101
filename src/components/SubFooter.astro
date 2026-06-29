@@ -1,0 +1,35 @@
+---
+interface Props {
+  message?: string;
+}
+const { message } = Astro.props;
+---
+<section class="subfooter">
+  <div class="subfooter-inner">
+    <p>{message ?? 'Join our community of members across the country.'}</p>
+    <a href="/join" class="btn-join">Join Now</a>
+  </div>
+</section>
+
+<style>
+  .subfooter {
+    background: #16213e;
+    color: #ccc;
+    padding: 2rem 1.5rem;
+    text-align: center;
+  }
+  .subfooter-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  p { margin: 0 0 1rem; }
+  .btn-join {
+    background: #e94560;
+    color: #fff;
+    padding: 0.5rem 1.5rem;
+    border-radius: 4px;
+    text-decoration: none;
+    font-weight: 600;
+  }
+  .btn-join:hover { background: #c73652; }
+</style>

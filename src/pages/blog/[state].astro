@@ -1,0 +1,56 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import SubHeader from '../../components/SubHeader.astro';
+import ContMenu from '../../components/ContMenu.astro';
+import ContContent from '../../components/ContContent.astro';
+import ContAdds from '../../components/ContAdds.astro';
+import SubFooter from '../../components/SubFooter.astro';
+
+export function getStaticPaths() {
+  const states = [
+    'alabama','alaska','arizona','arkansas','california','colorado','connecticut',
+    'delaware','florida','georgia','hawaii','idaho','illinois','indiana','iowa',
+    'kansas','kentucky','louisiana','maine','maryland','massachusetts','michigan',
+    'minnesota','mississippi','missouri','montana','nebraska','nevada',
+    'new-hampshire','new-jersey','new-mexico','new-york','north-carolina',
+    'north-dakota','ohio','oklahoma','oregon','pennsylvania','rhode-island',
+    'south-carolina','south-dakota','tennessee','texas','utah','vermont',
+    'virginia','washington','west-virginia','wisconsin','wyoming',
+  ];
+  return states.map(state => ({ params: { state } }));
+}
+
+const { state } = Astro.params;
+const stateName = state
+  .split('-')
+  .map(w => w.charAt(0).toUpperCase() + w.slice(1))
+  .join(' ');
+---
+<BaseLayout title={`${stateName} Resources`} description={`Member resources and news for ${stateName}.`}>
+  <SubHeader
+    title={stateName}
+    subtitle={`Local resources, news, and community updates for ${stateName}.`}
+  />
+
+  <div class="body-grid">
+    <ContMenu activeState={state} />
+    <ContContent title={`${stateName} Resources`}>
+      <p>Welcome to the <strong>{stateName}</strong> resource page. Content specific to this state will appear here.</p>
+      <p>Check back soon for local news, events, and member updates.</p>
+    </ContContent>
+    <ContAdds />
+  </div>
+
+  <SubFooter message={`Connect with members in ${stateName} — join today.`} />
+</BaseLayout>
+
+<style>
+  .body-grid {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    align-items: flex-start;
+    padding: 1.5rem;
+    gap: 1rem;
+  }
+</style>

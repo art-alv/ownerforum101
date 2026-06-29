@@ -1,0 +1,30 @@
+---
+interface Props {
+  title: string;
+  subtitle?: string;
+  imageUrl?: string;
+}
+const { title, subtitle, imageUrl } = Astro.props;
+---
+<section class="subheader" style={imageUrl ? `background-image: url(${imageUrl})` : ''}>
+  <div class="subheader-inner">
+    <h1>{title}</h1>
+    {subtitle && <p>{subtitle}</p>}
+  </div>
+</section>
+
+<style>
+  .subheader {
+    background: #16213e;
+    background-size: cover;
+    background-position: center;
+    color: #fff;
+    padding: 3rem 1.5rem;
+  }
+  .subheader-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  h1 { margin: 0 0 0.5rem; font-size: 2rem; }
+  p { margin: 0; color: #ccc; }
+</style>
